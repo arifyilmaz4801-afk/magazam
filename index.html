@@ -285,7 +285,42 @@
 
 
     <script>
+// Kırık PS4 Arka Plan İndirme API Fonksiyonu
+function ps4ArkaplanIndir(event, pkgUrl, oyunAdi) {
+    // Tarayıcının linki açmaya çalışıp çökmesini doğrudan önlüyoruz
+    event.preventDefault();
 
+    if (!pkgUrl || pkgUrl === "#") {
+        alert("Bu dosya için geçerli bir indirme linki bulunmuyor.");
+        return;
+    }
+
+    // GoldHEN dahili API adresi ve indirme komut portu
+    const ps4ApiUrl = 'http://127.0.0'; 
+
+    const veriPaketi = {
+        type: "direct",
+        url: pkgUrl
+    };
+
+    fetch(ps4ApiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(veriPaketi)
+            })
+    .then(response => {
+        if (response.ok) {
+            alert(oyunAdi + " başarıyla indirme kuyruğuna eklendi! PS4 ana menüsünden (Bildirimler -> İndirmeler) kontrol edebilirsiniz.");
+        } else {
+            alert("PS4 sistemi isteği kabul etmedi. GoldHEN'in kurulu ve aktif olduğundan emin olun.");
+        }
+    })
+    .catch(error => {
+        alert("Bağlantı Kurulamadı! Bu işlemi sadece kırık PS4 konsolunuzun internet tarayıcısı üzerinden yapabilirsiniz.");
+    });
+}
+
+        
         const JSON_DOSYASI = "./oyunlar/liste.json";
 
         let tumOyunlar = [];
