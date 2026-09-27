@@ -26,21 +26,21 @@
     "cusa": "CUSA25613",
     "resim": "https://rawg.io",
     "link_install": "http://gamebatofiles.ir",
-    "link_update": "http://Gamejs4.gamebatofiles.ir/PS4/pkg4/MotoGP.21/Update-v1.15-BP-FW+5.05/MotoGP21_CUSA25613_v1.15_BACKPORT_5.05-6.72-7.xx_OPOISSO893.pkg"
+    "link_update": "http://gamebatofiles.ir"
   },
   {
     "ad": "The Last of Us Remastered",
     "cusa": "CUSA00556",
     "resim": "https://rawg.io",
-    "link_install": "http://Gamejs4.gamebatofiles.ir/PS4/pkg4/The.Last.of.Us.Remastered/Install-v1.00-FW+5.05/The.Last.of.Us.Remastered_CUSA00556_v1.00_OPOISSO893.pkg",
-    "link_update": "http://Gamejs4.gamebatofiles.ir/PS4/pkg4/The.Last.of.Us.Remastered/Update-v1.11-Backpoert-FW+5.05/The.Last.of.Us.Remastered_CUSA00556_v1.11_OPOISSO893.pkg"
+    "link_install": "http://gamebatofiles.ir",
+    "link_update": "http://gamebatofiles.ir"
   },
   {
     "ad": "The Last of Us Remastered (TR / AR Sürümü)",
     "cusa": "CUSA00556 - Arabic/Turkish",
     "resim": "https://rawg.io",
-    "link_install": "http://Gamejs6.gamebatofiles.ir/PS4/pkg21/The.Last.of.Us.Remastered/Install-v1.06-FW+5.05/EP9000-CUSA00556_00-THELASTOFUS00000-V106-Playable.pkg",
-    "link_update": "http://Gamejs6.gamebatofiles.ir/PS4/pkg21/The.Last.of.Us.Remastered/Arabic.Patch-v1.11-FW+5.05/EP9000-CUSA00556_00-THELASTOFUS00000-V111-FW505-abodora.pkg"
+    "link_install": "http://gamebatofiles.ir",
+    "link_update": "http://gamebatofiles.ir"
   },
   {
     "ad": "Mafia II: Definitive Edition",
@@ -53,8 +53,51 @@
     "ad": "Bloodborne: Game of the Year Edition",
     "cusa": "CUSA03173",
     "resim": "https://rawg.io",
-    "link_install": "http://Gamejs4.gamebatofiles.ir/PS4/pkg8/Bloodborne.Game.of.The.Year.Edition/Install-v1.00-FW+5.05/Bloodborne.Game.of.the.Year.Edition.PS4-PRELUDE.pkg",
-    "link_update": "http://Gamejs4.gamebatofiles.ir/PS4/pkg8/Bloodborne.Game.of.The.Year.Edition/Update-v1.09-BP-FW+5.05/Bloodborne-Game-of-the-Year-Edition-Update-v1.09-PS4-PRELUDE.pkg",
-    "link_dlc": "http://Gamejs4.gamebatofiles.ir/PS4/pkg7/Bloodborne.Game.of.The.Year.Edition/DLC/UP9000-CUSA00900_00-SPEXPANSIONDLC03-A0000-V0100.pkg"
+    "link_install": "http://gamebatofiles.ir",
+    "link_update": "http://gamebatofiles.ir",
+    "link_dlc": "http://gamebatofiles.ir"
+  },
+  {
+    "ad": "Red Dead Redemption 2",
+    "cusa": "CUSA03041",
+    "resim": "https://rawg.io",
+    "link_install": "http://gamebatofiles.ir"
+  },
+  {
+    "ad": "Uncharted: The Nathan Drake Collection",
+    "cusa": "CUSA02344",
+    "resim": "https://rawg.io",
+    "link_install": "http://Gamejs4.gamebatofiles.ir/PS4/pkg5/Uncharted.The.Nathan.Drake.Collection/Install-v1.00-FW+5.05/Uncharted.The.Nathan.Drake.Collection.MULTI.PS4-PRELUDE.pkg",
+    "link_update": "http://Gamejs4.gamebatofiles.ir/PS4/pkg5/Uncharted.The.Nathan.Drake.Collection/Update-v1.02-FW+5.05/Uncharted.The.Nathan.Drake.Collection.MULTI.Update.v1.02.PS4-PRELUDE.pkg"
+  },
+  {
+    "ad": "Uncharted 4: A Thief's End",
+    "cusa": "CUSA00917",
+    "resim": "https://rawg.io",
+    "link_install": "http://Gamejs4.gamebatofiles.ir/PS4/pkg3/Uncharted.4.A.Thiefs.End/Install-v1.18-FW+9.00/Uncharted.4.A.Thiefs.End.incl.Update.v1.18.PS4.DUPLEX-CUSA00917.pkg"
+  },
+  {
+    "ad": "The Last of Us Part II",
+    "cusa": "CUSA10249",
+    "resim": "https://rawg.io",
+    "link_install": "http://Gamejs2.gamebatofiles.ir/PS4/pkg2/The.Last.of.Us.Part.II/Install-v1.00-FW+9.00/The.Last.of.Us.Part.2_CUSA10249_v1.00_OPOISSO893.pkg"
+  },
+  {
+    "ad": "Resident Evil 6",
+    "cusa": "CUSA03840",
+    "resim": "https://rawg.io",
+    "link_install": "http://Gamejs4.gamebatofiles.ir/PS4/pkg6/Resident.Evil.6/Install-v1.00-FW+5.05/EP0102-CUSA03840_00-BH6HDPS400000000-A0100-V0101.pkg"
+  },
+  {
+    "ad": "Resident Evil 5",
+    "cusa": "CUSA04437",
+    "resim": "https://rawg.io",
+    "link_install": "http://Gamejs4.gamebatofiles.ir/PS4/pkg11/Resident.Evil.5/Install-v1.01-FW+5.05/UP0102-CUSA04437_00-RE5HDPS400000000-A0100-V0101.pkg"
+  },
+  {
+    "ad": "Resident Evil 7: biohazard - Gold Edition",
+    "cusa": "CUSA09643",
+    "resim": "https://rawg.io",
+    "link_install": "http://Gamejs4.gamebatofiles.ir/PS4/pkg11/Resident.Evil.7.biohazard.Gold.Edition/Install-v1.01-FW+5.05/CUSA09643_RESIDENT_EVIL_7_BIOHAZARD_GOLD_EDITION_FXDv1.00_FW505.pkg"
   }
 ]
