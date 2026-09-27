@@ -1,5 +1,3 @@
-        // Güvenli Gömülü Oyun Veritabanı (Hatalardan Tamamen Arındırılmış Sürüm)
-        const tumOyunlar = [
           {
             "ad": "Trine 5: A Clockwork Conspiracy",
             "cusa": "CUSA41223",
