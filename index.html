@@ -3,146 +3,582 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kürt PS4 Store</title>
+
+    <title>kürt ps4 store</title>
+
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            font-family: 'Segoe UI', sans-serif; 
-            background: linear-gradient(135deg, #07070a 0%, #111119 100%); 
-            color: #ffffff; 
-            text-align: center; 
-            padding: 40px 20px; 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        header { margin-bottom: 40px; }
-        h1 { 
-            font-size: 3rem; 
-            font-weight: 800; 
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #07070a 0%, #111119 100%);
+            color: #ffffff;
+            text-align: center;
+            min-height: 100vh;
+            padding: 40px 20px 70px;
+        }
+
+        header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
             letter-spacing: 2px;
+            text-transform: lowercase;
             background: linear-gradient(45deg, #0072ff, #00f2fe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0px 5px 15px rgba(0, 114, 255, 0.3);
+            background-clip: text;
         }
-        p.subtitle { color: #8a8da4; font-size: 1.1rem; margin-top: 10px; }
-        .search-container { margin-bottom: 30px; }
+
+        .subtitle {
+            color: #8a8da4;
+            font-size: 1.05rem;
+            margin-top: 10px;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+        }
+
         .search-box {
             width: 100%;
             max-width: 500px;
-            padding: 12px 20px;
+            padding: 14px 20px;
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 30px;
             color: white;
             outline: none;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
-        .search-box:focus { border-color: #00f2fe; box-shadow: 0 0 15px rgba(0, 242, 254, 0.3); }
-        .container { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); 
-            gap: 30px; 
-            max-width: 1200px; 
-            margin: 0 auto; 
+
+        .search-box::placeholder {
+            color: #777b94;
+        }
+
+        .search-box:focus {
+            border-color: #00f2fe;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(
+                auto-fill,
+                minmax(260px, 1fr)
+            );
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
-        .game-card { 
-            background: rgba(255, 255, 255, 0.03); 
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            border-radius: 16px; 
+
+        .game-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+            transition: 0.3s;
             display: flex;
             flex-direction: column;
         }
-        .game-card:hover { transform: translateY(-10px); border-color: #00f2fe; box-shadow: 0 12px 20px rgba(0, 242, 254, 0.2); }
-        .game-img { width: 100%; height: 300px; object-fit: cover; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .game-info { padding: 20px; text-align: left; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-        .game-title { font-size: 1.25rem; font-weight: 600; margin-bottom: 8px; color: #fff; }
-        .game-meta { font-size: 0.9rem; color: #a0a5c1; margin-bottom: 15px; }
-        .tag-cusa { background: rgba(255, 255, 255, 0.1); padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-family: monospace; }
-        .button-group { display: flex; flex-direction: column; gap: 8px; margin-top: auto; }
-        .btn-download { 
-            display: block; 
-            color: white; 
-            padding: 10px; 
-            text-decoration: none; 
-            border-radius: 8px; 
-            font-weight: bold; 
+
+        .game-card:hover {
+            transform: translateY(-8px);
+            border-color: #00f2fe;
+            box-shadow: 0 12px 25px rgba(0, 242, 254, 0.2);
+        }
+
+        .game-img,
+        .no-image {
+            width: 100%;
+            height: 300px;
+        }
+
+        .game-img {
+            object-fit: cover;
+            display: block;
+            background: #15151d;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .no-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #15151d, #20202c);
+            color: #55596d;
+            font-size: 0.9rem;
+        }
+
+        .game-info {
+            padding: 20px;
+            text-align: left;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .game-meta {
+            font-size: 0.9rem;
+            color: #a0a5c1;
+            margin-bottom: 18px;
+        }
+
+        .tag-cusa {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-family: monospace;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .btn-download {
+            display: block;
+            color: white;
+            padding: 11px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
             text-align: center;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
+            transition: 0.3s;
         }
-        .btn-install { background: linear-gradient(45deg, #0072ff, #00f2fe); }
-        .btn-update { background: linear-gradient(45deg, #2ba81a, #4cd964); }
-        .btn-backport { background: linear-gradient(45deg, #ff9500, #ffcc00); color: #000; }
-        .btn-dlc { background: linear-gradient(45deg, #ff2d55, #ff3b30); }
-        .btn-download:hover { opacity: 0.9; transform: scale(1.02); }
-        .error-msg { color: #ff3b30; font-weight: bold; margin-top: 20px; grid-column: 1 / -1; }
+
+        .btn-download:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+        .btn-install {
+            background: linear-gradient(45deg, #0072ff, #00f2fe);
+        }
+
+        .btn-update {
+            background: linear-gradient(45deg, #2ba81a, #4cd964);
+        }
+
+        .btn-backport {
+            background: linear-gradient(45deg, #ff9500, #ffcc00);
+            color: #000;
+        }
+
+        .btn-dlc {
+            background: linear-gradient(45deg, #ff2d55, #ff3b30);
+        }
+
+        .message {
+            grid-column: 1 / -1;
+            padding: 30px;
+            color: #a0a5c1;
+        }
+
+        .error-msg {
+            color: #ff453a;
+            font-weight: bold;
+        }
+
+        .footer-joke {
+            position: fixed;
+            right: 12px;
+            bottom: 8px;
+            color: #454857;
+            font-size: 10px;
+            opacity: 0.55;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 25px 10px 50px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .subtitle {
+                font-size: 0.9rem;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                padding: 10px;
+            }
+
+            .game-img,
+            .no-image {
+                height: 350px;
+            }
+
+            .footer-joke {
+                font-size: 9px;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <header>
-        <h1>🎮 KÜRT PS4 STORE 🎮</h1>
-        <p class="subtitle">PS4 Konsolunuz İçin Doğrudan Veya Alternatif Linklerle FPKG İndirme Merkezi</p>
+
+        <h1>kürt ps4 store</h1>
+
+        <p class="subtitle">
+            ps4 konsolunuz için oyun merkezi
+        </p>
+
     </header>
 
+
     <div class="search-container">
-        <input type="text" id="arama-kutusu" class="search-box" placeholder="Oyun adı veya CUSA kodu ara..." onkeyup="oyunAra()">
+
+        <input
+            type="text"
+            id="arama-kutusu"
+            class="search-box"
+            placeholder="oyun adı veya cusa kodu ara..."
+            autocomplete="off"
+        >
+
     </div>
 
-    <div class="container" id="oyun-kutusu"></div>
+
+    <div
+        class="container"
+        id="oyun-kutusu"
+    >
+        <div class="message">
+            oyun listesi yükleniyor...
+        </div>
+    </div>
+
+
+    <div class="footer-joke">
+        sunucu çalışıyorsa sorun yoktur
+    </div>
+
 
     <script>
+
+        const JSON_DOSYASI = "./oyunlar/liste.json";
+
         let tumOyunlar = [];
 
-        // liste.json dosyasını doğrudan ve kesin bağlayan fonksiyon
-        fetch('oyunlar/liste.json')
-            .then(response => {
-                if (!response.ok) throw new Error();
-                return response.json();
-            })
-            .then(data => {
+
+        async function oyunlariYukle() {
+
+            const kutu =
+                document.getElementById("oyun-kutusu");
+
+            try {
+
+                const response =
+                    await fetch(JSON_DOSYASI, {
+                        cache: "no-store"
+                    });
+
+                if (!response.ok) {
+                    throw new Error(
+                        "liste.json bulunamadı. http " +
+                        response.status
+                    );
+                }
+
+                const data =
+                    await response.json();
+
+                if (!Array.isArray(data)) {
+                    throw new Error(
+                        "liste.json geçerli bir json dizisi değil."
+                    );
+                }
+
                 tumOyunlar = data;
+
                 ekranaBas(tumOyunlar);
-            })
-            .catch(() => {
-                document.getElementById('oyun-kutusu').innerHTML = `<p class="error-msg">⚠️ Oyun listesi (oyunlar/liste.json) okunamadı. JSON formatında bir karakter hatası olabilir.</p>`;
-            });
+
+            } catch (hata) {
+
+                console.error(
+                    "liste yükleme hatası:",
+                    hata
+                );
+
+                kutu.innerHTML = `
+                    <div class="message error-msg">
+                        oyun listesi yüklenemedi.
+                        <br><br>
+                        <small>
+                            ${escapeHTML(hata.message)}
+                        </small>
+                    </div>
+                `;
+            }
+        }
+
 
         function ekranaBas(oyunListesi) {
-            const kutu = document.getElementById('oyun-kutusu');
+
+            const kutu =
+                document.getElementById("oyun-kutusu");
+
             kutu.innerHTML = "";
+
+
+            if (!oyunListesi.length) {
+
+                kutu.innerHTML = `
+                    <div class="message">
+                        aradığınız oyun bulunamadı.
+                    </div>
+                `;
+
+                return;
+            }
+
+
             oyunListesi.forEach(oyun => {
+
                 let butonlarHTML = "";
-                if(oyun.link_install) butonlarHTML += `<a href="${oyun.link_install}" class="btn-download btn-install" target="_blank">Direct Link (PKG)</a>`;
-                if(oyun.link_update) butonlarHTML += `<a href="${oyun.link_update}" class="btn-download btn-update" target="_blank">Update (PKG)</a>`;
-                if(oyun.link_backport) butonlarHTML += `<a href="${oyun.link_backport}" class="btn-download btn-backport" target="_blank">Backport</a>`;
-                if(oyun.link_dlc) butonlarHTML += `<a href="${oyun.link_dlc}" class="btn-download btn-dlc" target="_blank">DLC</a>`;
+
+
+                if (oyun.link_install) {
+
+                    butonlarHTML += `
+                        <a
+                            href="${guvenliURL(oyun.link_install)}"
+                            class="btn-download btn-install"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            direct link
+                        </a>
+                    `;
+                }
+
+
+                if (oyun.link_update) {
+
+                    butonlarHTML += `
+                        <a
+                            href="${guvenliURL(oyun.link_update)}"
+                            class="btn-download btn-update"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            update
+                        </a>
+                    `;
+                }
+
+
+                if (oyun.link_backport) {
+
+                    butonlarHTML += `
+                        <a
+                            href="${guvenliURL(oyun.link_backport)}"
+                            class="btn-download btn-backport"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            backport
+                        </a>
+                    `;
+                }
+
+
+                if (oyun.link_dlc) {
+
+                    butonlarHTML += `
+                        <a
+                            href="${guvenliURL(oyun.link_dlc)}"
+                            class="btn-download btn-dlc"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            dlc
+                        </a>
+                    `;
+                }
+
+
+                let resimHTML = "";
+
+
+                if (
+                    oyun.resim &&
+                    String(oyun.resim).trim() !== ""
+                ) {
+
+                    resimHTML = `
+                        <img
+                            src="${guvenliURL(oyun.resim)}"
+                            class="game-img"
+                            alt="${escapeHTML(
+                                oyun.ad || "oyun"
+                            )}"
+                            loading="lazy"
+                            onerror="
+                                this.style.display='none';
+                                this.nextElementSibling.style.display='flex';
+                            "
+                        >
+
+                        <div
+                            class="no-image"
+                            style="display:none;"
+                        >
+                            görsel bulunamadı
+                        </div>
+                    `;
+
+                } else {
+
+                    resimHTML = `
+                        <div class="no-image">
+                            görsel bulunamadı
+                        </div>
+                    `;
+                }
+
 
                 kutu.innerHTML += `
+
                     <div class="game-card">
-                        <img src="${oyun.resim || 'https://placeholder.com'}" class="game-img" onerror="this.src='https://placeholder.com'">
+
+                        ${resimHTML}
+
                         <div class="game-info">
+
                             <div>
-                                <div class="game-title">${oyun.ad}</div>
-                                <div class="game-meta"><span class="tag-cusa">${oyun.cusa || 'CUSA'}</span></div>
+
+                                <div class="game-title">
+                                    ${escapeHTML(
+                                        oyun.ad || "isimsiz oyun"
+                                    )}
+                                </div>
+
+                                <div class="game-meta">
+
+                                    <span class="tag-cusa">
+                                        ${escapeHTML(
+                                            oyun.cusa || "cusa"
+                                        )}
+                                    </span>
+
+                                </div>
+
                             </div>
-                            <div class="button-group">${butonlarHTML}</div>
+
+                            <div class="button-group">
+                                ${butonlarHTML}
+                            </div>
+
                         </div>
-                    </div>`;
+
+                    </div>
+
+                `;
             });
         }
 
+
         function oyunAra() {
-            const aranan = document.getElementById('arama-kutusu').value.toLowerCase();
-            const filtrelenmis = tumOyunlar.filter(oyun => 
-                oyun.ad.toLowerCase().includes(aranan) || (oyun.cusa && oyun.cusa.toLowerCase().includes(aranan))
-            );
+
+            const aranan =
+                document
+                    .getElementById("arama-kutusu")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+
+            const filtrelenmis =
+                tumOyunlar.filter(oyun => {
+
+                    const ad =
+                        String(oyun.ad || "")
+                            .toLowerCase();
+
+                    const cusa =
+                        String(oyun.cusa || "")
+                            .toLowerCase();
+
+                    return (
+                        ad.includes(aranan) ||
+                        cusa.includes(aranan)
+                    );
+                });
+
+
             ekranaBas(filtrelenmis);
         }
+
+
+        function escapeHTML(deger) {
+
+            return String(deger)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        function guvenliURL(url) {
+
+            const deger =
+                String(url || "").trim();
+
+            if (
+                deger.startsWith("https://") ||
+                deger.startsWith("http://")
+            ) {
+                return deger;
+            }
+
+            return "#";
+        }
+
+
+        document
+            .getElementById("arama-kutusu")
+            .addEventListener(
+                "input",
+                oyunAra
+            );
+
+
+        oyunlariYukle();
+
     </script>
+
 </body>
 </html>
