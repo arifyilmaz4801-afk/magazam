@@ -7,125 +7,188 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;
- padding:30px 15px 60px;
- font-family:Arial,sans-serif;
- color:#fff;
- background:linear-gradient(135deg,#07070a,#11131c);
+    margin:0;
+    padding:35px 15px 60px;
+    font-family:Arial,sans-serif;
+    color:#fff;
+    background:linear-gradient(135deg,#07070a,#11141d);
 }
-header{text-align:center;margin-bottom:30px}
+
+header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
 h1{
- margin:0;
- font-size:42px;
- background:linear-gradient(90deg,#0072ff,#00eaff);
- -webkit-background-clip:text;
- color:transparent;
+    margin:0;
+    font-size:42px;
+    font-weight:800;
+    background:linear-gradient(90deg,#0072ff,#00eaff);
+    -webkit-background-clip:text;
+    color:transparent;
 }
-.subtitle{color:#888;margin-top:8px}
+
+.subtitle{
+    margin-top:8px;
+    color:#888;
+}
 
 #search{
- display:block;
- width:min(550px,100%);
- margin:0 auto 30px;
- padding:15px 20px;
- border-radius:30px;
- border:1px solid #30333d;
- outline:0;
- background:#151720;
- color:#fff;
- font-size:16px;
+    display:block;
+    width:min(550px,100%);
+    margin:0 auto 30px;
+    padding:15px 20px;
+    border:1px solid #30333d;
+    border-radius:30px;
+    outline:none;
+    background:#151720;
+    color:#fff;
+    font-size:16px;
 }
-#search:focus{border-color:#00d9ff}
+
+#search:focus{
+    border-color:#00d9ff;
+    box-shadow:0 0 15px #00d9ff33;
+}
 
 #games{
- width:min(1200px,100%);
- margin:auto;
- display:grid;
- grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
- gap:22px;
+    width:min(1200px,100%);
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(250px,1fr));
+    gap:22px;
 }
 
 .card{
- overflow:hidden;
- border:1px solid #292d38;
- border-radius:15px;
- background:#12141b;
- box-shadow:0 8px 30px #0008;
- transition:.2s;
+    overflow:hidden;
+    border:1px solid #292d38;
+    border-radius:15px;
+    background:#12141b;
+    box-shadow:0 8px 30px #0008;
+    transition:.2s;
 }
+
 .card:hover{
- transform:translateY(-5px);
- border-color:#00d9ff;
+    transform:translateY(-5px);
+    border-color:#00d9ff;
 }
 
-.cover,.no-cover{
- width:100%;
- height:300px;
-}
-.cover{display:block;object-fit:cover}
+.cover,
 .no-cover{
- display:grid;
- place-items:center;
- color:#777;
- background:linear-gradient(135deg,#181a22,#252834);
+    width:100%;
+    height:300px;
 }
 
-.info{padding:16px}
-.title{
- font-size:18px;
- font-weight:bold;
- line-height:1.35;
- margin-bottom:10px;
+.cover{
+    display:block;
+    object-fit:cover;
 }
+
+.no-cover{
+    display:grid;
+    place-items:center;
+    color:#777;
+    background:linear-gradient(135deg,#181a22,#252834);
+}
+
+.info{
+    padding:16px;
+}
+
+.title{
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.35;
+    margin-bottom:10px;
+}
+
 .cusa{
- display:inline-block;
- padding:5px 8px;
- border-radius:5px;
- background:#242732;
- color:#aaa;
- font:12px monospace;
- margin-bottom:15px;
+    display:inline-block;
+    padding:5px 8px;
+    margin-bottom:15px;
+    border-radius:5px;
+    background:#242732;
+    color:#aaa;
+    font:12px monospace;
 }
 
 .btn{
- width:100%;
- display:block;
- border:0;
- padding:11px;
- margin-top:8px;
- border-radius:8px;
- text-align:center;
- text-decoration:none;
- font-weight:bold;
- cursor:pointer;
- transition:.2s;
+    width:100%;
+    display:block;
+    padding:11px;
+    margin-top:8px;
+    border:0;
+    border-radius:8px;
+    text-align:center;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
+    cursor:pointer;
+    transition:.2s;
 }
-.btn:hover{filter:brightness(1.15)}
-.install{background:linear-gradient(90deg,#0072ff,#00d9ff);color:#fff}
-.update{background:linear-gradient(90deg,#15952d,#45d967);color:#fff}
-.backport{background:linear-gradient(90deg,#ff9500,#ffca28);color:#111}
-.dlc{background:linear-gradient(90deg,#ff2850,#ff4b35);color:#fff}
+
+.btn:hover{
+    filter:brightness(1.15);
+    transform:scale(1.02);
+}
+
+.install{
+    background:linear-gradient(90deg,#0072ff,#00d9ff);
+    color:#fff;
+}
+
+.update{
+    background:linear-gradient(90deg,#15952d,#45d967);
+    color:#fff;
+}
+
+.backport{
+    background:linear-gradient(90deg,#ff9500,#ffca28);
+    color:#111;
+}
+
+.dlc{
+    background:linear-gradient(90deg,#ff2850,#ff4b35);
+    color:#fff;
+}
 
 .message{
- grid-column:1/-1;
- text-align:center;
- color:#888;
- padding:40px;
+    grid-column:1/-1;
+    padding:40px;
+    text-align:center;
+    color:#888;
+}
+
+.error{
+    color:#ff5050;
 }
 
 footer{
- margin-top:40px;
- text-align:center;
- color:#444;
- font-size:11px;
+    margin-top:40px;
+    text-align:center;
+    color:#444;
+    font-size:11px;
 }
 
 @media(max-width:600px){
- body{padding:22px 10px 50px}
- h1{font-size:30px}
- #games{grid-template-columns:1fr}
- .cover,.no-cover{height:350px}
+    body{
+        padding:22px 10px 50px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    #games{
+        grid-template-columns:1fr;
+    }
+
+    .cover,
+    .no-cover{
+        height:350px;
+    }
 }
 </style>
 </head>
@@ -133,165 +196,498 @@ footer{
 <body>
 
 <header>
- <h1>kürt ps4 store</h1>
- <div class="subtitle">PS4 oyun merkezi</div>
+    <h1>kürt ps4 store</h1>
+    <div class="subtitle">PS4 oyun merkezi</div>
 </header>
 
 <input
- id="search"
- type="search"
- placeholder="Oyun adı veya CUSA kodu ara..."
- autocomplete="off"
+    id="search"
+    type="search"
+    placeholder="Oyun adı veya CUSA kodu ara..."
+    autocomplete="off"
 >
 
 <section id="games">
- <div class="message">Oyunlar yükleniyor...</div>
+    <div class="message">Oyunlar yükleniyor...</div>
 </section>
 
-<footer>sunucu çalışıyorsa sorun yoktur</footer>
+<footer>
+    sunucu çalışıyorsa sorun yoktur
+</footer>
 
 <script>
-const JSON_FILE="./oyunlar/liste.json";
-let oyunlar=[];
 
-const $=id=>document.getElementById(id);
+/* =====================================================
+   AYAR
+   ===================================================== */
 
-function esc(v){
- return String(v??"").replace(/[&<>"']/g,c=>({
-  "&":"&amp;",
-  "<":"&lt;",
-  ">":"&gt;",
-  '"':"&quot;",
-  "'":"&#039;"
- }[c]));
+/*
+   BURAYA PS4'ÜN YEREL IP ADRESİNİ YAZ.
+
+   Örnek:
+   const PS4_IP = "192.168.1.50";
+*/
+
+const PS4_IP = "192.168.1.50";
+
+const JSON_FILE = "./oyunlar/liste.json";
+
+let oyunlar = [];
+
+
+/* =====================================================
+   YARDIMCI FONKSİYONLAR
+   ===================================================== */
+
+const $ = id => document.getElementById(id);
+
+
+function escapeHTML(value){
+
+    return String(value ?? "").replace(/[&<>"']/g, char => ({
+        "&":"&amp;",
+        "<":"&lt;",
+        ">":"&gt;",
+        '"':"&quot;",
+        "'":"&#039;"
+    }[char]));
+
 }
 
-function url(v){
- v=String(v??"").trim();
- return /^https?:\/\//i.test(v)?v:"#";
+
+function safeURL(value){
+
+    const url = String(value ?? "").trim();
+
+    if(/^https?:\/\//i.test(url)){
+        return url;
+    }
+
+    return "#";
 }
 
-function buton(link,text,cls){
- if(!link)return "";
- return `
- <a class="btn ${cls}"
-    href="${url(link)}"
-    target="_blank"
-    rel="noopener noreferrer">
-    ${text}
- </a>`;
+
+/* =====================================================
+   GOLDHEN REMOTE PACKAGE INSTALLER
+   ===================================================== */
+
+async function ps4Install(pkgURL, gameName){
+
+    if(!pkgURL){
+
+        alert(
+            "Bu oyun için PKG bağlantısı bulunamadı."
+        );
+
+        return;
+    }
+
+
+    if(
+        !PS4_IP ||
+        PS4_IP === "192.168.1.50"
+    ){
+
+        alert(
+            "Önce HTML içindeki PS4_IP değerine " +
+            "PS4'ünün gerçek yerel IP adresini yaz.\n\n" +
+            "Örnek: 192.168.1.50"
+        );
+
+        return;
+    }
+
+
+    const api =
+        `http://${PS4_IP}:12800/api/install`;
+
+
+    try{
+
+        const response = await fetch(
+            api,
+            {
+                method:"POST",
+
+                headers:{
+                    "Content-Type":"application/json"
+                },
+
+                body:JSON.stringify({
+                    type:"direct",
+                    packages:[pkgURL]
+                })
+            }
+        );
+
+
+        const result =
+            await response.text();
+
+
+        if(!response.ok){
+
+            throw new Error(
+                `HTTP ${response.status}` +
+                (result ? ` - ${result}` : "")
+            );
+
+        }
+
+
+        alert(
+            gameName +
+            "\n\nİndirme isteği PS4'e gönderildi."
+        );
+
+
+        console.log(
+            "GoldHEN RPI:",
+            result
+        );
+
+
+    }catch(error){
+
+        console.error(error);
+
+
+        alert(
+            "PS4'e bağlantı kurulamadı.\n\n" +
+
+            "Kontrol et:\n" +
+            "• PS4 IP adresi doğru mu?\n" +
+            "• GoldHEN aktif mi?\n" +
+            "• Remote Package Installer çalışıyor mu?\n" +
+            "• PS4 ve site aynı ağda mı?\n" +
+            "• 12800 portu erişilebilir mi?\n\n" +
+
+            "Hata: " +
+            error.message
+        );
+
+    }
+
 }
 
-function kart(oyun){
 
- const ad=esc(oyun.ad||"İsimsiz oyun");
- const cusa=esc((oyun.cusa||"CUSA").trim());
+/* =====================================================
+   BUTONLAR
+   ===================================================== */
 
- /*
-  * rawg.io tek başına resim dosyası olmadığı için
-  * gerçek resim URL'si değilse görsel göstermiyoruz.
-  */
- const resim=String(oyun.resim||"").trim();
+function installButton(url,name){
 
- const image=
-  resim &&
-  /\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i.test(resim)
-  ?
-  `<img class="cover"
-        src="${url(resim)}"
-        alt="${ad}"
-        loading="lazy"
-        onerror="this.outerHTML='<div class=no-cover>Görsel bulunamadı</div>'">`
-  :
-  `<div class="no-cover">Görsel bulunamadı</div>`;
+    if(!url){
+        return "";
+    }
 
- return `
- <article class="card">
 
-  ${image}
+    return `
+        <button
+            class="btn install"
+            onclick='ps4Install(
+                ${JSON.stringify(url)},
+                ${JSON.stringify(name)}
+            )'>
+            INSTALL
+        </button>
+    `;
 
-  <div class="info">
-
-   <div class="title">${ad}</div>
-
-   <div class="cusa">${cusa}</div>
-
-   ${buton(oyun.link_install,"INSTALL","install")}
-   ${buton(oyun.link_update,"UPDATE","update")}
-   ${buton(oyun.link_backport,"BACKPORT","backport")}
-   ${buton(oyun.link_dlc,"DLC","dlc")}
-
-  </div>
-
- </article>`;
 }
 
-function goster(liste){
 
- const box=$("games");
+function updateButton(url,name){
 
- if(!liste.length){
-  box.innerHTML=
-   `<div class="message">Aradığınız oyun bulunamadı.</div>`;
-  return;
- }
+    if(!url){
+        return "";
+    }
 
- box.innerHTML=liste.map(kart).join("");
+
+    return `
+        <button
+            class="btn update"
+            onclick='ps4Install(
+                ${JSON.stringify(url)},
+                ${JSON.stringify(name + " UPDATE")}
+            )'>
+            UPDATE
+        </button>
+    `;
+
 }
 
-async function yukle(){
 
- try{
+function normalButton(url,text,cls){
 
-  const response=await fetch(JSON_FILE,{
-   cache:"no-store"
-  });
+    if(!url){
+        return "";
+    }
 
-  if(!response.ok)
-   throw new Error("liste.json HTTP "+response.status);
 
-  const data=await response.json();
+    return `
+        <a
+            class="btn ${cls}"
+            href="${safeURL(url)}"
+            target="_blank"
+            rel="noopener noreferrer">
+            ${text}
+        </a>
+    `;
 
-  if(!Array.isArray(data))
-   throw new Error("liste.json bir JSON dizisi olmalı.");
-
-  oyunlar=data;
-  goster(oyunlar);
-
- }catch(error){
-
-  console.error(error);
-
-  $("games").innerHTML=`
-   <div class="message">
-    Oyun listesi yüklenemedi.
-    <br><br>
-    <small>${esc(error.message)}</small>
-   </div>`;
- }
 }
 
-$("search").addEventListener("input",function(){
 
- const q=this.value
-  .trim()
-  .toLocaleLowerCase("tr-TR");
+/* =====================================================
+   OYUN KARTI
+   ===================================================== */
 
- const sonuc=oyunlar.filter(oyun=>{
+function oyunKarti(oyun){
 
-  const ad=String(oyun.ad||"")
-   .toLocaleLowerCase("tr-TR");
+    const ad =
+        escapeHTML(
+            oyun.ad || "İsimsiz oyun"
+        );
 
-  const cusa=String(oyun.cusa||"")
-   .toLocaleLowerCase("tr-TR");
 
-  return ad.includes(q)||cusa.includes(q);
- });
+    const cusa =
+        escapeHTML(
+            String(oyun.cusa || "CUSA").trim()
+        );
 
- goster(sonuc);
-});
 
-yukle();
+    const resim =
+        String(oyun.resim || "").trim();
+
+
+    let imageHTML;
+
+
+    /*
+       Senin JSON'unda "https://rawg.io"
+       doğrudan resim dosyası değil.
+
+       JPG/PNG/WebP/GIF ise göstermeyi deniyoruz.
+    */
+
+    if(
+        resim &&
+        /\.(jpg|jpeg|png|webp|gif)(\?.*)?$/i.test(resim)
+    ){
+
+        imageHTML = `
+            <img
+                class="cover"
+                src="${safeURL(resim)}"
+                alt="${ad}"
+                loading="lazy"
+                onerror="
+                    this.outerHTML=
+                    '<div class=no-cover>Görsel bulunamadı</div>'
+                "
+            >
+        `;
+
+    }else{
+
+        imageHTML = `
+            <div class="no-cover">
+                Görsel bulunamadı
+            </div>
+        `;
+
+    }
+
+
+    return `
+        <article class="card">
+
+            ${imageHTML}
+
+            <div class="info">
+
+                <div class="title">
+                    ${ad}
+                </div>
+
+                <div class="cusa">
+                    ${cusa}
+                </div>
+
+                ${installButton(
+                    oyun.link_install,
+                    oyun.ad || "Oyun"
+                )}
+
+                ${updateButton(
+                    oyun.link_update,
+                    oyun.ad || "Oyun"
+                )}
+
+                ${normalButton(
+                    oyun.link_backport,
+                    "BACKPORT",
+                    "backport"
+                )}
+
+                ${normalButton(
+                    oyun.link_dlc,
+                    "DLC",
+                    "dlc"
+                )}
+
+            </div>
+
+        </article>
+    `;
+
+}
+
+
+/* =====================================================
+   LİSTEYİ GÖSTER
+   ===================================================== */
+
+function oyunlariGoster(liste){
+
+    const box = $("games");
+
+
+    if(!liste.length){
+
+        box.innerHTML = `
+            <div class="message">
+                Aradığınız oyun bulunamadı.
+            </div>
+        `;
+
+        return;
+    }
+
+
+    box.innerHTML =
+        liste.map(oyunKarti).join("");
+
+}
+
+
+/* =====================================================
+   JSON YÜKLE
+   ===================================================== */
+
+async function oyunlariYukle(){
+
+    try{
+
+        const response =
+            await fetch(
+                JSON_FILE,
+                {
+                    cache:"no-store"
+                }
+            );
+
+
+        if(!response.ok){
+
+            throw new Error(
+                `liste.json HTTP ${response.status}`
+            );
+
+        }
+
+
+        const data =
+            await response.json();
+
+
+        if(!Array.isArray(data)){
+
+            throw new Error(
+                "liste.json bir JSON dizisi olmalı."
+            );
+
+        }
+
+
+        oyunlar = data;
+
+        oyunlariGoster(oyunlar);
+
+
+    }catch(error){
+
+        console.error(
+            "JSON yükleme hatası:",
+            error
+        );
+
+
+        $("games").innerHTML = `
+            <div class="message error">
+
+                Oyun listesi yüklenemedi.
+
+                <br><br>
+
+                <small>
+                    ${escapeHTML(error.message)}
+                </small>
+
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   ARAMA
+   ===================================================== */
+
+$("search").addEventListener(
+    "input",
+    function(){
+
+        const query =
+            this.value
+                .trim()
+                .toLocaleLowerCase("tr-TR");
+
+
+        const sonuc =
+            oyunlar.filter(oyun => {
+
+                const ad =
+                    String(oyun.ad || "")
+                    .toLocaleLowerCase("tr-TR");
+
+
+                const cusa =
+                    String(oyun.cusa || "")
+                    .toLocaleLowerCase("tr-TR");
+
+
+                return(
+                    ad.includes(query) ||
+                    cusa.includes(query)
+                );
+
+            });
+
+
+        oyunlariGoster(sonuc);
+
+    }
+);
+
+
+/* =====================================================
+   BAŞLAT
+   ===================================================== */
+
+oyunlariYukle();
+
 </script>
 
 </body>
