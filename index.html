@@ -97,55 +97,34 @@
 
     <script>
         let tumOyunlar = [];
-        
-        // Kullanıcı adını ve depo adını URL'den otomatik çözen sistem
-        const pathArray = window.location.pathname.split('/');
-        const repoName = pathArray[1] || "ps4-magazam";
-        
-        // Denenecek tüm olası dosya yolları
-        const yollar = [
-            'oyunlar/liste.json',
-            'Oyunlar/liste.json',
-            'oyunlar/Liste.json',
-            'Oyunlar/Liste.json',
-            './oyunlar/liste.json',
-            `/${repoName}/oyunlar/liste.json`
-        ];
 
-        function siraIleDene(index) {
-            if (index >= yollar.length) {
-                document.getElementById('oyun-kutusu').innerHTML = `<p class="error-msg">⚠️ Oyun listesi (liste.json) okunamadı. Klasör adının tamamen küçük harflerle 'oyunlar' ve içindeki dosyanın 'liste.json' olduğundan emin olun.</p>`;
-                return;
-            }
-
-            fetch(yollar[index])
-                .then(response => {
-                    if (!response.ok) throw new Error();
-                    return response.json();
-                })
-                .then(data => {
-                    tumOyunlar = data;
-                    ekranaBas(tumOyunlar);
-                })
-                .catch(() => {
-                    // Başarısız olursa bir sonraki alternatifi dene
-                    siraIleDene(index + 1);
-                });
-        }
+        // liste.json dosyasını doğrudan ve kesin bağlayan fonksiyon
+        fetch('oyunlar/liste.json')
+            .then(response => {
+                if (!response.ok) throw new Error();
+                return response.json();
+            })
+            .then(data => {
+                tumOyunlar = data;
+                ekranaBas(tumOyunlar);
+            })
+            .catch(() => {
+                document.getElementById('oyun-kutusu').innerHTML = `<p class="error-msg">⚠️ Oyun listesi (oyunlar/liste.json) okunamadı. JSON formatında bir karakter hatası olabilir.</p>`;
+            });
 
         function ekranaBas(oyunListesi) {
             const kutu = document.getElementById('oyun-kutusu');
             kutu.innerHTML = "";
             oyunListesi.forEach(oyun => {
                 let butonlarHTML = "";
-                if(oyun.link_install) butonlarHTML += `<a href="${oyun.link_install}" class="btn-download btn-install" target="_blank">💿 Ana Oyunu İndir</a>`;
-                if(oyun.link_update) butonlarHTML += `<a href="${oyun.link_update}" class="btn-download btn-update" target="_blank">🔄 Güncelleme (Update)</a>`;
-                if(oyun.link_backport) butonlarHTML += `<a href="${oyun.link_backport}" class="btn-download btn-backport" target="_blank">⚙️ Backport Yaması</a>`;
-                if(oyun.link_dlc) butonlarHTML += `<a href="${oyun.link_dlc}" class="btn-download btn-dlc" target="_blank">🔺 DLC / Ek Paket</a>`;
+                if(oyun.link_install) butonlarHTML += `<a href="${oyun.link_install}" class="btn-download btn-install" target="_blank">Direct Link (PKG)</a>`;
+                if(oyun.link_update) butonlarHTML += `<a href="${oyun.link_update}" class="btn-download btn-update" target="_blank">Update (PKG)</a>`;
+                if(oyun.link_backport) butonlarHTML += `<a href="${oyun.link_backport}" class="btn-download btn-backport" target="_blank">Backport</a>`;
+                if(oyun.link_dlc) butonlarHTML += `<a href="${oyun.link_dlc}" class="btn-download btn-dlc" target="_blank">DLC</a>`;
 
                 kutu.innerHTML += `
                     <div class="game-card">
-                        <img src="${oyun.resim || 'https://placeholder.com'}" class="game-img">
+                        <img src="${oyun.resim || 'https://placeholder.com'}" class="game-img" onerror="this.src='https://placeholder.com'">
                         <div class="game-info">
                             <div>
                                 <div class="game-title">${oyun.ad}</div>
@@ -164,9 +143,6 @@
             );
             ekranaBas(filtrelenmis);
         }
-
-        // Test zincirini başlat
-        siraIleDene(0);
     </script>
 </body>
 </html>
