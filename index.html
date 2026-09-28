@@ -254,7 +254,7 @@ footer{
  if(!response.ok){ 
  throw new Error( `HTTP ${response.status}` + (result ? ` - ${result}` : "") ); 
  } 
- alert( gameName + "\n\nİndirme isteği PS4'e gönderildi." ); 
+ alert( gameName + "\n\nİndirme isteği PS4'e gönderildi. Konsolunuzu kontrol edin." ); 
  console.log( "GoldHEN RPI:", result ); 
  }catch(error){ 
  console.error(error); 
@@ -265,20 +265,19 @@ footer{
  "• GoldHEN aktif mi?\n" + 
  "• Remote Package Installer çalışıyor mu?\n" + 
  "• PS4 ve bu siteye girdiğin cihaz (telefon/pc) AYNI ağda mı?\n" + 
- "• 12800 portu erişilebilir mi?\n\n" + 
+ "• Siteniz HTTPS (Güvenli Bağlantı) kullanıyor mu? (HTTP olmalıdır!)\n\n" + 
  "Hata: " + error.message 
  ); 
  } 
  } 
 
  /* ===================================================== BUTONLAR ===================================================== */ 
-function installButton(url, name){ 
-    if(!url){ 
-        return ""; 
-    } 
-    // PS4 tarayıcısından tıklandığında direkt indirmeyi başlatması için düz linke çeviriyoruz
-    return ` <a class="btn install" href="${safeURL(url)}" download> INDIR / INSTALL </a> `; 
-}
+ function installButton(url,name){ 
+ if(!url){ 
+ return ""; 
+ } 
+ return ` <button class="btn install" onclick='ps4Install( ${JSON.stringify(url)}, ${JSON.stringify(name)} )'> INSTALL </button> `; 
+ } 
 
  function updateButton(url,name){ 
  if(!url){ 
@@ -353,7 +352,6 @@ function installButton(url, name){
  ); 
 
  /* ===================================================== LOCALSTORAGE (IP HAFIZAYA ALMA) ===================================================== */ 
- // Sayfa ilk açıldığında eğer önceden girilmiş bir IP varsa kutuya otomatik yazar
  document.addEventListener("DOMContentLoaded", () => {
    const kayitliIP = localStorage.getItem("user_ps4_ip");
    if(kayitliIP){
@@ -361,7 +359,6 @@ function installButton(url, name){
    }
  });
 
- // Kullanıcı kutuya her yeni IP yazdığında bunu tarayıcı hafızasına kaydeder
  \$("ps4-ip").addEventListener("input", function(){
    localStorage.setItem("user_ps4_ip", this.value.trim());
  });
