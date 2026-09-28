@@ -205,7 +205,9 @@ footer{
  let oyunlar = []; 
 
  /* ===================================================== YARDIMCI FONKSİYONLAR ===================================================== */ 
- const \$ = id => document.getElementById(id); 
+ function getEl(id) {
+   return document.getElementById(id);
+ }
 
  function escapeHTML(value){ 
  return String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"'" }[char])); 
@@ -226,7 +228,7 @@ footer{
  return; 
  } 
 
- const currentIP = \$("ps4-ip").value.trim();
+ const currentIP = getEl("ps4-ip").value.trim();
 
  if( !currentIP ){ 
  alert( "Lütfen önce sayfanın üstündeki alana PS4 konsolunuzun IP adresini giriniz!" ); 
@@ -306,7 +308,7 @@ footer{
 
  /* ===================================================== LİSTEYİ GÖSTER ===================================================== */ 
  function oyunlariGoster(liste){ 
- const box = \$("games"); 
+ const box = getEl("games"); 
  if(!liste.length){ 
  box.innerHTML = ` <div class="message"> Aradığınız oyun bulunamadı. </div> `; 
  return; 
@@ -332,12 +334,12 @@ footer{
  oyunlariGoster(oyunlar); 
  }catch(error){ 
  console.error( "JSON yükleme hatası:", error ); 
- \$("games").innerHTML = ` <div class="message error"> Oyun listesi yüklenemedi. <br><br> <small> ${escapeHTML(error.message)} </small> </div> `; 
+ getEl("games").innerHTML = ` <div class="message error"> Oyun listesi yüklenemedi. <br><br> <small> ${escapeHTML(error.message)} </small> </div> `; 
  } 
  } 
 
  /* ===================================================== ARAMA ===================================================== */ 
- \$("search").addEventListener( "input", function(){ 
+ getEl("search").addEventListener( "input", function(){ 
  const query = this.value .trim() .toLocaleLowerCase("tr-TR"); 
  const sonuc = oyunlar.filter(oyun => { 
  const ad = String(oyun.ad || "") .toLocaleLowerCase("tr-TR"); 
@@ -352,11 +354,11 @@ footer{
  document.addEventListener("DOMContentLoaded", () => {
    const kayitliIP = localStorage.getItem("user_ps4_ip");
    if(kayitliIP){
-     \$("ps4-ip").value = kayitliIP;
+     getEl("ps4-ip").value = kayitliIP;
    }
  });
 
- \$("ps4-ip").addEventListener("input", function(){
+ getEl("ps4-ip").addEventListener("input", function(){
    localStorage.setItem("user_ps4_ip", this.value.trim());
  });
 
