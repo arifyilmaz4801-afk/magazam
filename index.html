@@ -272,12 +272,13 @@ footer{
  } 
 
  /* ===================================================== BUTONLAR ===================================================== */ 
- function installButton(url,name){ 
- if(!url){ 
- return ""; 
- } 
- return ` <button class="btn install" onclick='ps4Install( ${JSON.stringify(url)}, ${JSON.stringify(name)} )'> INSTALL </button> `; 
- } 
+function installButton(url, name){ 
+    if(!url){ 
+        return ""; 
+    } 
+    // PS4 tarayıcısından tıklandığında direkt indirmeyi başlatması için düz linke çeviriyoruz
+    return ` <a class="btn install" href="${safeURL(url)}" download> INDIR / INSTALL </a> `; 
+}
 
  function updateButton(url,name){ 
  if(!url){ 
