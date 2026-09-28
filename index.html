@@ -190,9 +190,7 @@ footer{
  </header> 
 
  <div class="input-container">
-   <!-- Ziyaretçinin kendi PS4 IP adresini gireceği alan -->
    <input id="ps4-ip" type="text" placeholder="PS4 Yerel IP Adresini Girin (Örn: 192.168.1.45)" autocomplete="off">
-   <!-- Arama Çubuğu -->
    <input id="search" type="search" placeholder="Oyun adı veya CUSA kodu ara..." autocomplete="off" > 
  </div>
 
@@ -228,7 +226,6 @@ footer{
  return; 
  } 
 
- // Kullanıcının input alanına yazdığı IP adresini anlık çekiyoruz
  const currentIP = \$("ps4-ip").value.trim();
 
  if( !currentIP ){ 
